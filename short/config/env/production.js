@@ -19,5 +19,13 @@ module.exports = {
     port: 6379,
     host: 'redis',
     db: 3
+  },
+  db: {
+    uri: 'mongodb://mongo:27017/short',
+    options: {
+      server: {
+        socketOptions: { keepAlive: 1 }
+      }
+    }
   }
 }

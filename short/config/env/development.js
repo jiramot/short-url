@@ -19,5 +19,13 @@ module.exports = {
     port: 6379,
     host: 'localhost',
     db: 3
+  },
+  db: {
+    uri: 'mongodb://localhost:27017/short',
+    options: {
+      server: {
+        socketOptions: { keepAlive: 1 }
+      }
+    }
   }
 }

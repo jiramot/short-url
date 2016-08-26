@@ -4,7 +4,8 @@ const fs = require('fs')
 const path = require('path')
 const join = path.join
 const express = require('express')
-
+const mongoose = require('mongoose')
+const mockgoose = require('mockgoose')
 const config = require('./config/config')
 
 const models = join(__dirname, 'app/models')
@@ -15,6 +16,9 @@ logger.level = config.logger.level || 'debug'
 
 module.exports = app
 
+// Use native promises
+mongoose.Promise = global.Promise
+
 // Bootstrap models
 fs.readdirSync(models)
   .filter(file => ~file.indexOf('.js'))
@@ -24,5 +28,22 @@ fs.readdirSync(models)
 require('./config/routes')(app)
 require('./config/express')(app)
 
-app.listen(port)
-logger.info('Express app started on port ' + port)
+if (app.get('env') === 'test') {
+  mockgoose(mongoose)
+  mongoose.connect(config.db)
+  listen()
+} else {
+  connect()
+    .on('error', logger.error)
+    .on('disconnected', connect)
+    .once('open', listen)
+}
+
+function listen () {
+  app.listen(port)
+  logger.info('Express app started on port ' + port)
+}
+
+function connect () {
+  return mongoose.connect(config.db.uri, config.db.options).connection
+}
