@@ -1,0 +1,22 @@
+version: '2'
+
+services:
+  # short:
+  #   build:
+  #     context: short
+  #   ports:
+  #     - "3001:3000"
+  #   depends_on
+  #     - redis
+
+  redis:
+    image: redis
+
+  nginx:
+    image: jiramot/nginx:1.11.2
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+    ports:
+      - "80:80"
+    depends_on:
+      - redis

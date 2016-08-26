@@ -1,0 +1,51 @@
+{
+  "name": "short",
+  "version": "1.0.0",
+  "description": "Short url service",
+  "main": "app.js",
+  "engines": {
+    "node": "4.2.x",
+    "npm": "3.3.x"
+  },
+  "keywords": [
+    "fungjai",
+    "short",
+    "url"
+  ],
+  "scripts": {
+    "start": "NODE_ENV=development node app.js",
+    "prod": "NODE_ENV=production node app.js",
+    "docker": "NODE_ENV=docker node app.js",
+    "debug": "NODE_ENV=development ./node_modules/.bin/nodemon --debug app.js",
+    "test": "NODE_ENV=test node_modules/.bin/mocha test --recursive --reporter mocha-jenkins-reporter || true",
+    "coverage": "NODE_ENV=test node_modules/.bin/istanbul cover --report cobertura _mocha -- test --recursive"
+  },
+  "author": "Fugnjai Co., Ltd",
+  "license": "ISC",
+  "dependencies": {
+    "api-health-check": "^0.1.4",
+    "bluebird": "^3.4.1",
+    "body-parser": "^1.15.0",
+    "cors": "^2.7.1",
+    "escape-string-regexp": "^1.0.5",
+    "express": "^4.13.4",
+    "lodash": "^4.6.1",
+    "node-uuid": "^1.4.7",
+    "random-js": "^1.0.8",
+    "redis": "^2.6.2",
+    "sinon": "^1.17.3",
+    "underscore": "^1.8.3",
+    "winston": "^2.2.0"
+  },
+  "devDependencies": {
+    "aglio": "^2.2.1",
+    "chai": "^3.5.0",
+    "dredd": "^1.1.0",
+    "istanbul": "^0.4.3",
+    "mocha": "^2.4.5",
+    "mocha-jenkins-reporter": "^0.2.2",
+    "node-inspector": "^0.12.8",
+    "proxyquire": "^1.7.4",
+    "supertest": "^1.2.0"
+  }
+}
