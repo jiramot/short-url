@@ -1,0 +1,11 @@
+doctype html
+include ../layout/head.pug
+  form(name="add", method="post")
+    div(class='form-group')
+      label(for='slug') Slug
+      input(class='form-control', type='text', name='slug')
+
+      label(for='url') Url
+      input(class='form-control', type='text', name='url')
+
+      button(class='btn btn-default', type='button') Add

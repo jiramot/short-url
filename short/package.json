@@ -33,6 +33,7 @@
     "mockgoose": "^5.4.1",
     "mongoose": "^4.4.6",
     "node-uuid": "^1.4.7",
+    "pug": "^2.0.0-beta5",
     "random-js": "^1.0.8",
     "redis": "^2.6.2",
     "sinon": "^1.17.3",

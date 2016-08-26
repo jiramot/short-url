@@ -12,8 +12,15 @@ let client = redis.createClient(redisConfig)
 bluebird.promisifyAll(redis.RedisClient.prototype);
 
 exports.index = function (req, res, next) {
-  let url = req.query.url
-  res.json(req.query)
+  // let url = req.query.url
+  // res.json(req.query)
+  res.render('slug/index', { title: 'Slug', message: 'Hello there!!'});
+}
+
+exports.create = function (req, res, next) {
+  // let url = req.query.url
+  // res.json(req.query)
+  res.render('slug/create', { title: 'Create', message: 'Hello there!!'});
 }
 
 let generateShort = function(url){

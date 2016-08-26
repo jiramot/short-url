@@ -9,5 +9,6 @@ const express = require('express')
 
 module.exports = function (app) {
   app.get('/', short.index)
+  app.get('/create', short.create)
   app.get('/healthcheck', healthcheck.check)
 }
